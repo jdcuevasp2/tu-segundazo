@@ -10,6 +10,9 @@ import { ListarVehiculoComponent } from './listar-vehiculo/listar-vehiculo.compo
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ListarVehiculoComponent
   ]
 })
 export class VehiculoModule { }
