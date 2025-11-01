@@ -17,4 +17,17 @@ export class VehiculoService {
    return this.http.get<Vehiculo[]>(this.apiUrl);
  }
 
+ private contarVehiculosPorMarca(vehiculos: Vehiculo[]): { [marca: string]: number } {
+   return vehiculos.reduce((contador, vehiculo) => {
+     const marca = vehiculo.marca;
+     contador[marca] = (contador[marca] || 0) + 1;
+     return contador;
+   }, {} as { [marca: string]: number });
+ }
+
+ getConteoMarcas(vehiculos: Vehiculo[]): { marca: string, cantidad: number }[] {
+   const conteo = this.contarVehiculosPorMarca(vehiculos);
+   return Object.entries(conteo).map(([marca, cantidad]) => ({ marca, cantidad }));
+ }
+
 }

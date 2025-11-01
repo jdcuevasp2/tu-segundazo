@@ -10,13 +10,20 @@ import { VehiculoService } from '../vehiculo.service';
 export class ListarVehiculoComponent implements OnInit {
 
   vehiculos: Array<Vehiculo> = [];
+  conteoMarcas: { marca: string, cantidad: number }[] = [];
 
   constructor(private vehiculoService: VehiculoService ) { }
 
   getVehiculos(): void {
     this.vehiculoService.getVehiculos().subscribe((vehiculos) => {
       this.vehiculos = vehiculos;
+      // Calcular el conteo automáticamente cuando se cargan los vehículos
+      this.calcularConteoMarcas();
     });
+  }
+
+  calcularConteoMarcas(): void {
+    this.conteoMarcas = this.vehiculoService.getConteoMarcas(this.vehiculos);
   }
 
   ngOnInit(): void {
