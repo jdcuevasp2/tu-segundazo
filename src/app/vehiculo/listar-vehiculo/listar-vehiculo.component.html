@@ -1,1 +1,18 @@
-<h1>listar-vehiculo works!</h1>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Línea</th>
+      <th scope="col">Modelo</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let vehiculo of vehiculos">
+    <tr>
+      <th scope="row">{{ vehiculo.id }}</th>
+      <td> {{ vehiculo.marca }}</td>
+      <td>{{ vehiculo.linea }}</td>
+      <td>{{ vehiculo.modelo }}</td>
+    </tr>
+  </tbody>
+</table>
